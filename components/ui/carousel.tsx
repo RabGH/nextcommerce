@@ -273,7 +273,7 @@ const CarouselDots = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button> & CarouselDotsProps
 >(({ className, children, selectedIndex, ...props }, ref) => {
-  const { scrollTo, api } = useCarousel();
+  const { scrollTo } = useCarousel();
 
   const handleClick = () => {
     scrollTo(selectedIndex);
