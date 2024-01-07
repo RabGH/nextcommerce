@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { CartProvider as USCProdiver } from "use-shopping-cart";
 
@@ -11,8 +13,8 @@ export default function CartProvider({
       mode="payment"
       cartMode="client-only"
       stripe={process.env.NEXT_PUBLIC_STRIPE as string}
-      successUrl="/"
-      cancelUrl="/"
+      successUrl="https://localhost:3000/success"
+      cancelUrl="https://localhost:3000/error"
       currency="USD"
       billingAddressCollection={true}
       shouldPersist={true}
