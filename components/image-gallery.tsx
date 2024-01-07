@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 
-import { fullProduct } from "@/lib/interface";
+import { Product } from "@/lib/interface";
 import { urlFor } from "@/lib/sanity";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/carousel";
 
 interface ImageGalleryProps {
-  images: fullProduct["images"];
+  images: Product["images"];
 }
 
 const ImageGallery = ({ images }: ImageGalleryProps) => {

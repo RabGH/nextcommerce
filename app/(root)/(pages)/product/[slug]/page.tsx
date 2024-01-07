@@ -1,22 +1,23 @@
 import React from "react";
 
 import { client } from "@/lib/sanity";
-import { fullProduct } from "@/lib/interface";
+import { Product } from "@/lib/interface";
 import ImageGallery from "@/components/image-gallery";
 import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
 import Link from "next/link";
+import AddToBag from "@/components/add-to-bag";
 
-async function getData(slug: fullProduct["slug"]) {
+async function getData(slug: Product["slug"]) {
   const query = `*[_type == "product" && slug.current == "${slug}"][0] {
-        _id,
-        images,
-        price,
-        name,
-        description,
-        "slug": slug.current,
-        "categoryName": category->name
-    }`;
+_id,
+images,
+price,
+name,
+description,
+"slug": slug.current,
+"categoryName": category->name
+}`;
 
   const data = await client.fetch(query);
   return data;
@@ -24,12 +25,12 @@ async function getData(slug: fullProduct["slug"]) {
 
 interface ProductPageProps {
   params: {
-    slug: fullProduct["slug"];
+    slug: Product["slug"];
   };
 }
 
 const ProductPage = async ({ params }: ProductPageProps) => {
-  const data: fullProduct = await getData(params.slug);
+  const data: Product = await getData(params.slug);
 
   return (
     <div className="bg-white">
@@ -77,7 +78,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
             </div>
 
             <div className="flex gap-2.5">
-              <Button>Add To Bag</Button>
+              <AddToBag {...data} />
               <Button variant={"secondary"}>Checkout now</Button>
             </div>
 
