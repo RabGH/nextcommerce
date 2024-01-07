@@ -5,6 +5,7 @@ import { fullProduct } from "@/lib/interface";
 import ImageGallery from "@/components/image-gallery";
 import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
+import Link from "next/link";
 
 async function getData(slug: fullProduct["slug"]) {
   const query = `*[_type == "product" && slug.current == "${slug}"][0] {
@@ -38,9 +39,12 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
           <div className="md:py-8">
             <div className="mb-2 md:mb-3">
-              <span className="mb-0.5 inline-block text-gray-500">
+              <Link
+                href={`/categories/${data.categoryName}`}
+                className="mb-0.5 inline-block text-gray-500 hover:text-gray-700 transition300"
+              >
                 {data.categoryName}
-              </span>
+              </Link>
               <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl">
                 {data.name}
               </h2>

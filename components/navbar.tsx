@@ -8,9 +8,9 @@ import { ShoppingBag } from "lucide-react";
 
 const links = [
   { name: "Home", href: "/", "aria-label": "home" },
-  { name: "Men", href: "/Men", "aria-label": "men" },
-  { name: "Women", href: "/Women", "aria-label": "women" },
-  { name: "Teens", href: "/Teens", "aria-label": "teens" },
+  { name: "Men", href: "/categories/Men", "aria-label": "men" },
+  { name: "Women", href: "/categories/Women", "aria-label": "women" },
+  { name: "Teens", href: "/categories/Teens", "aria-label": "teens" },
 ];
 
 const Navbar = () => {

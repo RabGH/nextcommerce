@@ -26,6 +26,16 @@ const CategoryPage = async ({
 }) => {
   const data: simplifiedProduct[] = await getData(params.category);
 
+  if (data.length === 0) {
+    return (
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+          No products found for category: {params.category}
+        </h2>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="flex justify-between items-center">

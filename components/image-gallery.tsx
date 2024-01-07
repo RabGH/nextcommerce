@@ -23,7 +23,7 @@ interface ImageGalleryProps {
 const ImageGallery = ({ images }: ImageGalleryProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 4000, stopOnInteraction: true })
   );
   const [selectedIndex, setSelectedIndex] = React.useState<
     number | undefined
