@@ -3,7 +3,7 @@ import { Image } from "sanity";
 export interface Product {
   _id: string;
   name: string;
-  description?: string;
+  description: string;
   images: Image[];
   price: number;
   slug: string;

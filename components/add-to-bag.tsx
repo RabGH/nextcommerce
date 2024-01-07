@@ -16,11 +16,12 @@ const AddToBag = (product: Product) => {
 
   const productForCart = {
     name: product.name,
+    description: product.description,
     price: product.price,
     image: imageUrl,
     currency: "USD",
     sku: product._id,
-    description: product.description,
+    slug: product.slug,
   };
 
   const handleAddItem = () => {
