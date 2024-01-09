@@ -5,7 +5,7 @@ import { Product } from "@/lib/interface";
 import ProductCard from "@/components/product-card";
 
 async function getData(category: Product["categoryName"]) {
-  const query = `*[_type == "product" && category->name == "Men"] {
+  const query = `*[_type == "product" && category->name == "${category}"] {
       _id,
       "images": images[].asset->url,
       price,

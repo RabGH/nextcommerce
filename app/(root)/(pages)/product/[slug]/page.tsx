@@ -7,19 +7,22 @@ import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
 import Link from "next/link";
 import AddToBag from "@/components/add-to-bag";
+import CheckoutNow from "@/components/checkout-now";
 
 async function getData(slug: Product["slug"]) {
   const query = `*[_type == "product" && slug.current == "${slug}"][0] {
-_id,
-images,
-price,
-name,
-description,
-"slug": slug.current,
-"categoryName": category->name
-}`;
+        _id,
+        images,
+        price,
+        name,
+        description,
+        "slug": slug.current,
+        "categoryName": category->name,
+        price_id
+      }`;
 
   const data = await client.fetch(query);
+
   return data;
 }
 
@@ -79,7 +82,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
             <div className="flex gap-2.5">
               <AddToBag {...data} />
-              <Button variant={"secondary"}>Checkout now</Button>
+              <CheckoutNow {...data} />
             </div>
 
             <p className="mt-12 text-base text-gray-500 tracking-wide">

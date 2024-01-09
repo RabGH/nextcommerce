@@ -20,8 +20,9 @@ const AddToBag = (product: Product) => {
     price: product.price,
     image: imageUrl,
     currency: "USD",
-    sku: product._id,
+    // sku: product._id,
     slug: product.slug,
+    sku: product.price_id,
   };
 
   const handleAddItem = () => {

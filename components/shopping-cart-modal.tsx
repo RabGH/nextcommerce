@@ -2,6 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useShoppingCart } from "use-shopping-cart";
 
 import {
   Sheet,
@@ -9,9 +11,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useShoppingCart } from "use-shopping-cart";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 const ShoppingCartModal = () => {
   const {
@@ -21,7 +21,20 @@ const ShoppingCartModal = () => {
     cartDetails,
     removeItem,
     totalPrice,
+    redirectToCheckout,
   } = useShoppingCart();
+
+  async function handleCheckoutClick(event: any) {
+    event.preventDefault();
+    try {
+      const result = await redirectToCheckout();
+      if (result?.error) {
+        console.log(result.error);
+      }
+    } catch (error: any) {
+      console.log(error);
+    } // use toast instead
+  }
 
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
@@ -87,6 +100,7 @@ const ShoppingCartModal = () => {
               )}
             </ul>
           </div>
+
           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
             <div className="flex justify-between text-base font-medium text-gray-900">
               <p>Subtotal:</p> <p>${totalPrice}</p>
@@ -96,8 +110,11 @@ const ShoppingCartModal = () => {
             </p>
 
             <div className="mt-6">
-              <Button className="w-full">Checkout</Button>
+              <Button onClick={handleCheckoutClick} className="w-full">
+                Checkout
+              </Button>
             </div>
+            
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <Button
                 onClick={() => handleCartClick()}

@@ -13,8 +13,8 @@ export default function CartProvider({
       mode="payment"
       cartMode="client-only"
       stripe={process.env.NEXT_PUBLIC_STRIPE as string}
-      successUrl="https://localhost:3000/success"
-      cancelUrl="https://localhost:3000/error"
+      successUrl="https://localhost:3000/stripe/success"
+      cancelUrl="https://localhost:3000/stripe/error"
       currency="USD"
       billingAddressCollection={true}
       shouldPersist={true}
